@@ -36,6 +36,8 @@ def run():
     elements = []
     for tags in html_tags:
         elements = soup.find_all(tags[0], class_=tags[1])
+        if elements:
+            break
 
     if elements:
         service_name_and_status = elements[0].text.strip().lower()
