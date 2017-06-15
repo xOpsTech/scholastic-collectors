@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8"/>
+    <title>
+        NetSuite - Status page
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=latin,latin-ext,cyrillic"
+          rel="stylesheet" type="text/css"/>
+    <link href="css/reset.css" rel="stylesheet"/>
+    <link href="css/layout.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="script/jquery-1.11.2.min.js" type="text/javascript">
+    </script>
+    <script src="script/statuspage.js" type="text/javascript">
+    </script>
+</head>
+<body class="">
+<div class="top-bar">
+    <header>
+        <nav class="platform-nav">
+            <ul id="application-selector">
+                <li data-id="NS">
+                    <a class="active" href="#app=NS#">
+                        NetSuite
+                    </a>
+                </li>
+                <li data-id="OA">
+                    <a class="" href="http://status.openair.com/">
+                        OpenAir
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="prefs">
+     <span data-locale-key="all-times-in-prefix">
+      All times in
+     </span>
+            <span id="time-zone">
+      GMT+0530
+     </span>
+            <span data-locale-key="all-times-in-suffix">
+     </span>
+            <select aria-label="Select language" id="locale-selector">
+                <option value="cs-CZ">
+                    Česky
+                </option>
+                <option value="da-DK">
+                    Dansk
+                </option>
+                <option value="de-DE">
+                    Deutsch
+                </option>
+                <option value="en-US">
+                    English
+                </option>
+                <option value="es-AR">
+                    Español (Latinoamérica)
+                </option>
+                <option value="es-ES">
+                    Español (España)
+                </option>
+                <option value="fr-CA">
+                    Français (Canada)
+                </option>
+                <option value="fr-FR">
+                    Français (France)
+                </option>
+                <option value="it-IT">
+                    Italiano
+                </option>
+                <option value="ja-JP">
+                    日本語
+                </option>
+                <option value="ko-KR">
+                    한국어
+                </option>
+                <option value="nl-NL">
+                    Nederlands
+                </option>
+                <option value="pt-BR">
+                    Português (Brasil)
+                </option>
+                <option value="ru-RU">
+                    Русский язык
+                </option>
+                <option value="sv-SE">
+                    Svenska
+                </option>
+                <option value="th-TH">
+                    ภาษาไทย
+                </option>
+                <option value="tr-TR">
+                    Türk
+                </option>
+                <option value="zh-CN">
+                    简体中文
+                </option>
+                <option value="zh-TW">
+                    繁體中文
+                </option>
+            </select>
+        </div>
+    </header>
+</div>
+<div class="page-wrapper">
+    <div class="masthead">
+        <h1 id="app-name">
+            <img alt="NetSuite" src="https://system.netsuite.com/pages/loginpage/assets/images/netsuite-logo.jpg"/>
+        </h1>
+        <div class="stat-container">
+            <div class="stat-label" id="app-uptime-period">
+                Jun '16 - May '17
+            </div>
+            <div class="stat-box">
+                <div class="stat" id="app-uptime">
+                    99.97%
+                </div>
+                <div class="stat-label" data-locale-key="avg-uptime">
+                    Avg uptime
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat" id="app-requests">
+                    194,436,542,374
+                </div>
+                <div class="stat-label" data-locale-key="app-requests">
+                    Application Requests
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loader">
+    </div>
+    <div class="segment-control-container">
+        <nav class="segmented-control-lrg">
+            <ul id="datacenter-selector">
+                <li class="active" data-id="null">
+                    <a href="#">
+                        All
+                    </a>
+                </li>
+                <li data-id="sc9">
+                    <a href="#dtc=sc9#">
+                        NA West
+                    </a>
+                </li>
+                <li data-id="se4">
+                    <a href="#dtc=se4#">
+                        NA Northwest
+                    </a>
+                </li>
+                <li data-id="bo1">
+                    <a href="#dtc=bo1#">
+                        NA East
+                    </a>
+                </li>
+                <li data-id="du3">
+                    <a href="#dtc=du3#">
+                        EU West
+                    </a>
+                </li>
+                <li data-id="am3">
+                    <a href="#dtc=am3#">
+                        EU Central
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <section>
+        <h2 data-locale-key="current-status">
+            Current status
+        </h2>
+        <div class="group">
+            <table class="width-half left-col" id="current-status-left">
+                <tbody>
+                <tr>
+                    <td>
+                        Application UI
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SuiteCommerce - Websites
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SuiteCommerce - Checkout
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="width-half" id="current-status-right">
+                <tbody>
+                <tr>
+                    <td>
+                        Asynchronous Services
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SuiteTalk
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SuiteAnalytics Connect
+                    </td>
+                    <td>
+                        <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_available">
+                            </use>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <script id="current-status-row" type="text/sp-template">
+                <tr>
+                    <td><%= name %></td>
+                    <td><%= icon.render() %></td>
+                </tr>
+            </script>
+        </div>
+    </section>
+    <section>
+        <h2 data-locale-key="recent-posts">
+            Recent posts
+        </h2>
+        <div id="recent-posts">
+            <div class="post-day">
+                <div class="post-date">
+                    6/9/2017
+                </div>
+                <div class="post group">
+                    <div class="post-status">
+                        <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                            <use xlink:href="#icon-icon_messaging_disruption">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="post-update">
+                        <p>
+                            An incident in multiple colocation facilities has resulted in a degradation in availability
+                            for customers local to these datacenters when using NetSuite functionality. Operations
+                            Engineers were notified of the issue by monitoring and resolved it.
+                        </p>
+                        <p class="timestamp">
+         <span>
+          03:15 PM
+         </span>
+                            <span>
+          - 04:32 PM (Resolved)
+         </span>
+                        </p>
+                    </div>
+                    <!--
+                                 <div class="rss-link">
+                                     <svg class="icon icon-rss" viewBox="0 0 30 30"><use xlink:href="#icon-rss"></use></svg>
+                                 </div>
+                                 -->
+                </div>
+            </div>
+        </div>
+        <div data-locale-key="no-recent-posts" id="no-recent-posts" style="display: none;">
+            No recent posts
+        </div>
+        <a data-locale-key="show-more" href="#" id="more-link" style="display: none;">
+            Show more
+        </a>
+    </section>
+    <section>
+        <h2 data-locale-key="past-7-days">
+            Past 7 days
+        </h2>
+        <table id="weekly-status">
+            <thead>
+            <tr>
+                <th class="lg-col">
+                    Service
+                </th>
+                <th class="sm-col col-today">
+                    Today
+                </th>
+                <th class="sm-col ">
+                    6/14/2017
+                </th>
+                <th class="sm-col ">
+                    6/13/2017
+                </th>
+                <th class="sm-col ">
+                    6/12/2017
+                </th>
+                <th class="sm-col ">
+                    6/11/2017
+                </th>
+                <th class="sm-col ">
+                    6/10/2017
+                </th>
+                <th class="sm-col ">
+                    6/9/2017
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    Application UI
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="accounting" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="accounting" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="accounting" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="accounting" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="accounting" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="accounting" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell error-cell" data-date="1496946600000" data-service="accounting" data-status="2"
+                    title="Click to show details...">
+                    <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_disruption">
+                        </use>
+                    </svg>
+                    <div class="arrow-down">
+                    </div>
+                    <div class="arrow-down">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SuiteCommerce - Websites
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="shopping" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="shopping" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="shopping" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="shopping" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="shopping" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="shopping" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell error-cell" data-date="1496946600000" data-service="shopping" data-status="2"
+                    title="Click to show details...">
+                    <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_disruption">
+                        </use>
+                    </svg>
+                    <div class="arrow-down">
+                    </div>
+                    <div class="arrow-down">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SuiteCommerce - Checkout
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="checkout" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="checkout" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="checkout" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="checkout" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="checkout" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="checkout" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell error-cell" data-date="1496946600000" data-service="checkout" data-status="2"
+                    title="Click to show details...">
+                    <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_disruption">
+                        </use>
+                    </svg>
+                    <div class="arrow-down">
+                    </div>
+                    <div class="arrow-down">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1496946600000" data-service="mail" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Asynchronous Services
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="backend" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="backend" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="backend" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="backend" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="backend" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="backend" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell error-cell" data-date="1496946600000" data-service="backend" data-status="2"
+                    title="Click to show details...">
+                    <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_disruption">
+                        </use>
+                    </svg>
+                    <div class="arrow-down">
+                    </div>
+                    <div class="arrow-down">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SuiteTalk
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="webservices" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="webservices" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="webservices" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="webservices" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="webservices" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="webservices" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell error-cell" data-date="1496946600000" data-service="webservices" data-status="2"
+                    title="Click to show details...">
+                    <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_disruption">
+                        </use>
+                    </svg>
+                    <div class="arrow-down">
+                    </div>
+                    <div class="arrow-down">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SuiteAnalytics Connect
+                </td>
+                <td class="status-cell" data-date="1497465000000" data-service="odbc" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497378600000" data-service="odbc" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497292200000" data-service="odbc" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497205800000" data-service="odbc" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497119400000" data-service="odbc" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell" data-date="1497033000000" data-service="odbc" data-status="0">
+                    <svg class="icon icon-icon_messaging_available" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_available">
+                        </use>
+                    </svg>
+                </td>
+                <td class="status-cell error-cell" data-date="1496946600000" data-service="odbc" data-status="2"
+                    title="Click to show details...">
+                    <svg class="icon icon-icon_messaging_disruption" viewbox="0 0 30 30">
+                        <use xlink:href="#icon-icon_messaging_disruption">
+                        </use>
+                    </svg>
+                    <div class="arrow-down">
+                    </div>
+                    <div class="arrow-down">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        Copyright ©
+        <span class="year">
+     2017
+    </span>
+        NetSuite Inc. All Rights Reserved.
+        <br/>
+        <a href="http://www.netsuite.com/portal/pdf/netsuite-service-level-commitment.pdf">
+            Service level commitment
+        </a>
+    </footer>
+</div>
+<!-- Common templates -->
+<script id="icon-warning" type="text/sp-template">
+    <svg class="icon icon-icon_messaging_partial" viewBox="0 0 30 30">
+        <use xlink:href="#icon-icon_messaging_partial"></use>
+    </svg>
+</script>
+<script id="icon-error" type="text/sp-template">
+    <svg class="icon icon-icon_messaging_disruption" viewBox="0 0 30 30">
+        <use xlink:href="#icon-icon_messaging_disruption"></use>
+    </svg>
+</script>
+<script id="icon-info" type="text/sp-template">
+    <svg class="icon icon-icon_messaging_info" viewBox="0 0 30 30">
+        <use xlink:href="#icon-icon_messaging_info"></use>
+    </svg>
+</script>
+<script id="icon-ok" type="text/sp-template">
+    <svg class="icon icon-icon_messaging_available" viewBox="0 0 30 30">
+        <use xlink:href="#icon-icon_messaging_available"></use>
+    </svg>
+</script>
+<!-- SVG markup for reference -->
+<svg display="none" height="30" version="1.1" viewbox="0 0 214 30" width="214" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="icon-icon_messaging_available">
+            <path d="M22.542,0.008 C22.542,0.008 8.704,14.049 8.704,14.049 C8.704,14.049 1.430,6.668 1.430,6.668 C1.430,6.668 -0.002,8.121 -0.002,8.121 C-0.002,8.121 8.704,16.954 8.704,16.954 C8.704,16.954 23.974,1.460 23.974,1.460 C23.974,1.460 22.542,0.008 22.542,0.008 Z">
+            </path>
+        </g>
+        <g id="icon-icon_messaging_partial">
+            <path d="M22.541,-0.007 C22.541,-0.007 8.702,13.619 8.702,13.619 C8.702,13.619 1.428,6.457 1.428,6.457 C1.428,6.457 -0.003,7.866 -0.003,7.866 C-0.003,7.866 8.702,16.438 8.702,16.438 C8.702,16.438 23.973,1.402 23.973,1.402 C23.973,1.402 22.541,-0.007 22.541,-0.007 Z"
+                  fill-rule="evenodd" id="partial-check">
+            </path>
+            <path d="M23.690,21.371 C23.485,20.967 23.280,20.564 23.075,20.160 C22.632,19.290 22.190,18.419 21.747,17.549 C21.326,16.721 20.905,15.893 20.484,15.066 C20.238,14.582 20.039,14.026 19.668,13.616 C19.334,13.245 18.818,13.036 18.319,13.036 C17.855,13.036 17.303,13.245 16.969,13.616 C16.598,14.026 16.399,14.582 16.153,15.066 C15.732,15.893 15.311,16.721 14.890,17.549 C14.448,18.419 14.005,19.290 13.562,20.160 C13.357,20.564 13.152,20.967 12.947,21.371 C12.826,21.613 12.751,21.883 12.751,22.172 C12.751,23.181 13.582,23.999 14.607,23.999 C14.607,23.999 18.319,23.999 18.319,23.999 C18.319,23.999 22.030,23.999 22.030,23.999 C23.055,23.999 23.886,23.181 23.886,22.172 C23.886,21.883 23.811,21.613 23.690,21.371 ZM14.864,22.006 C14.864,22.006 15.373,21.051 15.373,21.051 C15.373,21.051 17.963,15.958 17.963,15.958 C18.035,15.817 18.104,15.671 18.172,15.523 C18.217,15.428 18.268,15.318 18.319,15.217 C18.369,15.318 18.420,15.428 18.465,15.523 C18.534,15.671 18.602,15.817 18.674,15.958 C18.674,15.958 21.749,22.006 21.749,22.006 C21.749,22.006 14.864,22.006 14.864,22.006 Z"
+                  fill-rule="evenodd" id="partial-triangle">
+            </path>
+        </g>
+        <g id="icon-icon_messaging_disruption">
+            <path d="M20.000,24.000 C20.000,24.000 12.000,24.000 12.000,24.000 C12.000,24.000 4.000,24.000 4.000,24.000 C1.791,24.000 0.000,22.209 0.000,20.000 C0.000,19.368 0.160,18.777 0.421,18.246 C0.864,17.363 1.306,16.479 1.748,15.596 C2.702,13.691 3.656,11.785 4.610,9.880 C5.517,8.068 6.425,6.256 7.332,4.444 C7.862,3.385 8.292,2.168 9.090,1.270 C9.812,0.459 11.000,0.000 12.000,0.000 C13.077,0.000 14.188,0.459 14.910,1.270 C15.708,2.168 16.138,3.385 16.668,4.444 C17.575,6.256 18.483,8.068 19.390,9.880 C20.344,11.785 21.298,13.691 22.252,15.596 C22.694,16.479 23.136,17.363 23.579,18.246 C23.840,18.777 24.000,19.368 24.000,20.000 C24.000,22.209 22.209,24.000 20.000,24.000 ZM22.014,19.029 C22.014,19.029 15.104,5.227 15.104,5.227 C14.961,4.943 14.826,4.648 14.689,4.352 C14.348,3.609 14.026,2.908 13.603,2.432 C13.233,2.016 12.604,1.746 12.000,1.746 C11.433,1.746 10.744,2.036 10.398,2.425 C9.974,2.902 9.652,3.595 9.311,4.337 C9.174,4.634 9.039,4.913 8.897,5.197 C8.897,5.197 1.992,18.956 1.992,18.956 C1.832,19.282 1.750,19.550 1.750,19.875 C1.750,21.116 2.759,22.000 4.000,22.000 C4.000,22.000 20.000,22.000 20.000,22.000 C21.241,22.000 22.250,21.116 22.250,19.875 C22.250,19.550 22.169,19.345 22.014,19.029 ZM12.000,20.000 C11.450,20.000 11.000,19.550 11.000,19.000 C11.000,18.450 11.450,18.000 12.000,18.000 C12.550,18.000 13.000,18.450 13.000,19.000 C13.000,19.550 12.550,20.000 12.000,20.000 ZM12.000,17.000 C11.450,17.000 11.000,16.550 11.000,16.000 C11.000,16.000 11.000,7.000 11.000,7.000 C11.000,6.450 11.450,6.000 12.000,6.000 C12.550,6.000 13.000,6.450 13.000,7.000 C13.000,7.000 13.000,16.000 13.000,16.000 C13.000,16.550 12.550,17.000 12.000,17.000 Z">
+            </path>
+        </g>
+        <g id="icon-icon_messaging_info">
+            <path d="M12.000,24.000 C5.373,24.000 0.000,18.627 0.000,12.000 C0.000,5.373 5.373,0.000 12.000,0.000 C18.627,0.000 24.000,5.373 24.000,12.000 C24.000,18.627 18.627,24.000 12.000,24.000 ZM12.000,1.500 C6.210,1.500 1.500,6.210 1.500,12.000 C1.500,17.790 6.210,22.500 12.000,22.500 C17.790,22.500 22.500,17.790 22.500,12.000 C22.500,6.210 17.790,1.500 12.000,1.500 ZM11.000,9.000 C11.000,9.000 13.000,9.000 13.000,9.000 C13.000,9.000 13.000,19.000 13.000,19.000 C13.000,19.000 11.000,19.000 11.000,19.000 C11.000,19.000 11.000,9.000 11.000,9.000 ZM11.000,5.000 C11.000,5.000 13.000,5.000 13.000,5.000 C13.000,5.000 13.000,7.000 13.000,7.000 C13.000,7.000 11.000,7.000 11.000,7.000 C11.000,7.000 11.000,5.000 11.000,5.000 Z"
+                  fill-rule="evenodd">
+            </path>
+        </g>
+        <g id="icon-icon_messaging_error">
+            <path class="path1"
+                  d="M12.000,24.000 C5.373,24.000 0.000,18.627 0.000,12.000 C0.000,5.373 5.373,0.000 12.000,0.000 C18.627,0.000 24.000,5.373 24.000,12.000 C24.000,18.627 18.627,24.000 12.000,24.000 ZM12.000,1.500 C6.210,1.500 1.500,6.210 1.500,12.000 C1.500,17.790 6.210,22.500 12.000,22.500 C17.790,22.500 22.500,17.790 22.500,12.000 C22.500,6.210 17.790,1.500 12.000,1.500 ZM16.186,17.601 C16.186,17.601 12.000,13.414 12.000,13.414 C12.000,13.414 7.814,17.601 7.814,17.601 C7.277,17.199 6.801,16.723 6.399,16.186 C6.399,16.186 10.586,12.000 10.586,12.000 C10.586,12.000 6.399,7.814 6.399,7.814 C6.801,7.277 7.277,6.801 7.814,6.399 C7.814,6.399 12.000,10.586 12.000,10.586 C12.000,10.586 16.186,6.399 16.186,6.399 C16.723,6.801 17.199,7.277 17.601,7.814 C17.601,7.814 13.414,12.000 13.414,12.000 C13.414,12.000 17.601,16.186 17.601,16.186 C17.199,16.723 16.723,17.199 16.186,17.601 Z">
+            </path>
+        </g>
+        <g id="icon-rss">
+            <path d="M18.000,19.000 C18.000,9.626 10.374,2.000 1.000,2.000 C1.000,2.000 1.000,-0.000 1.000,-0.000 C11.493,-0.000 20.000,8.507 20.000,19.000 C20.000,19.000 18.000,19.000 18.000,19.000 ZM5.000,17.500 C5.000,18.881 3.881,20.000 2.500,20.000 C1.119,20.000 0.000,18.881 0.000,17.500 C0.000,16.119 1.119,15.000 2.500,15.000 C3.881,15.000 5.000,16.119 5.000,17.500 ZM1.000,7.000 C7.627,7.000 13.000,12.373 13.000,19.000 C13.000,19.000 11.000,19.000 11.000,19.000 C11.000,13.486 6.514,9.000 1.000,9.000 C1.000,9.000 1.000,7.000 1.000,7.000 Z"
+                  style="fill-rule:evenodd;clip-rule:evenodd;">
+            </path>
+        </g>
+        <g id="icon-pin">
+            <path d="M22.693,6.383 C22.693,6.383 21.139,4.880 21.139,4.880 C21.139,4.880 19.700,3.489 19.700,3.489 C19.700,3.489 18.262,2.098 18.262,2.098 C18.262,2.098 16.104,0.011 16.104,0.011 C15.042,1.038 14.654,2.496 14.876,3.982 C14.876,3.982 10.337,8.371 10.337,8.371 C8.179,7.752 5.858,8.003 3.993,9.165 C3.993,9.165 7.474,12.531 7.474,12.531 C7.474,12.531 8.912,13.922 8.912,13.922 C8.912,13.922 0.282,22.269 0.282,22.269 C-0.116,22.653 -0.116,23.276 0.282,23.660 C0.679,24.044 1.323,24.044 1.720,23.660 C1.720,23.660 10.350,15.313 10.350,15.313 C10.350,15.313 11.904,16.816 11.904,16.816 C11.904,16.816 15.385,20.182 15.385,20.182 C16.618,18.330 17.079,16.221 16.153,13.874 C16.153,13.874 20.574,9.600 20.574,9.600 C22.198,9.942 23.675,9.606 24.850,8.470 C24.850,8.470 22.693,6.383 22.693,6.383 ZM21.748,8.252 C21.748,8.252 21.747,8.252 21.747,8.252 C21.480,8.252 21.194,8.220 20.898,8.158 C20.898,8.158 20.084,7.986 20.084,7.986 C20.084,7.986 14.375,13.508 14.375,13.508 C14.375,13.508 14.728,14.401 14.728,14.401 C15.165,15.509 15.233,16.585 14.927,17.653 C14.927,17.653 11.070,13.922 11.070,13.922 C11.070,13.922 6.664,9.663 6.664,9.663 C7.103,9.567 7.557,9.518 8.021,9.518 C8.651,9.518 9.285,9.608 9.904,9.785 C9.904,9.785 10.775,10.035 10.775,10.035 C10.775,10.035 16.495,4.502 16.495,4.502 C16.495,4.502 16.386,3.771 16.386,3.771 C16.314,3.286 16.328,2.827 16.426,2.409 C16.426,2.409 22.397,8.184 22.397,8.184 C22.191,8.229 21.974,8.252 21.748,8.252 Z"
+                  fill-rule="evenodd">
+            </path>
+        </g>
+    </defs>
+</svg>
+</body>
+</html>

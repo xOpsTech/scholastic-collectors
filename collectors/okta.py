@@ -8,35 +8,27 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-page = requests.get(constants.URL_SUMOLOGIC)
+page = requests.get(constants.URL_OKTA)
 soup = BeautifulSoup(page.content, 'html.parser')
 # print soup.prettify()
 
-HAPPY_STATE = 'all systems operational'
-
-service_states_dict = {
-    'all systems operational': 'good',
-    'major system outage': 'critical',
-    'partial system outage': 'major',
-    'minor system outage': 'minor'
-}
+HAPPY_STATE = 'all systems are operational'
 
 html_tags = [
-    ('span', 'status font-large'),
-    ('a', 'actual-title with-ellipsis')
+    ('h4', 'content-title'),
 ]
 
 
 def run():
     json_template = templates.get_json_template()
     json_template.update({
-        'source': constants.SOURCE_SUMOLOGIC,
-        'sourceUrl': constants.URL_SUMOLOGIC,
+        'source': constants.SOURCE_OKTA,
+        'sourceUrl': constants.URL_OKTA,
         'sourceStatus': constants.STATUS_GOOD,
     })
 
     try:
-        service_name_and_status = None
+        service_status = None
         elements = []
         for tags in html_tags:
             elements = soup.find_all(tags[0], class_=tags[1])
@@ -44,22 +36,22 @@ def run():
                 break
 
         if elements:
-            service_name_and_status = elements[0].text.strip().lower()
+            service_status = elements[0].text.strip().lower()
 
         # service_value = service_states_dict[service_name_and_status]
 
         json_template['services'].append({
-            'name': 'sumologic',
-            'value': service_name_and_status
+            'name': 'okta',
+            'value': service_status
         })
 
-        if service_name_and_status.lower() != HAPPY_STATE:
+        if service_status.lower() != HAPPY_STATE:
             json_template['sourceStatus'] = constants.STATUS_CRITICAL
 
         print json.dumps(json_template)
         ES.create_index_data(json_template)
     except Exception:
-        logger.error('error parsing %s', constants.SOURCE_SUMOLOGIC, exc_info=1)
+        logger.error('error parsing %s', constants.SOURCE_OKTA, exc_info=1)
         logger.error("-" * 100)
         logger.error(unicode(soup))
         logger.error("-" * 100)
