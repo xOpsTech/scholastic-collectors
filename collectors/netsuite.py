@@ -1,5 +1,6 @@
 # https://stackoverflow.com/questions/2148493/scrape-html-generated-by-javascript-with-python
 # http://phantomjs.org/download.html
+# https://stackoverflow.com/questions/8778513/how-can-i-setup-run-phantomjs-on-ubuntu
 
 import json
 from bs4 import BeautifulSoup
@@ -12,9 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 driver = webdriver.PhantomJS()
-driver.get('https://status.netsuite.com/')
-
-# page = requests.get(constants.URL_NETSUITE)
+driver.get(constants.URL_NETSUITE)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 # print soup.prettify()
 
@@ -57,10 +56,10 @@ def run():
 
         json_template['sourceStatus'] = service_status
 
-        print json.dumps(json_template)
+        # print json.dumps(json_template)
         ES.create_index_data(json_template)
     except Exception:
-        logger.error('error parsing %s', constants.SOURCE_OKTA, exc_info=1)
+        logger.error('error parsing %s', constants.SOURCE_NETSUITE, exc_info=1)
         logger.error("-" * 100)
         logger.error(unicode(soup))
         logger.error("-" * 100)

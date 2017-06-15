@@ -34,7 +34,9 @@ def search_index_data(index, query, is_aggregated_query=False):
 def create_index_data(body, index=INDEX, doc_type=TYPE, id=None):
     try:
         res = es_client.index(index=index, doc_type=doc_type, id=id, body=body)
-        print 'created', res['_id']
+        print 'source: %s | source status: %s | document id: %s' % (body['source'], body['sourceStatus'], res['_id'])
+        logger.info('source: %s | source status: %s | document id: %s', body['source'], body['sourceStatus'],
+                    res['_id'])
         return res['created']
     except Exception, e:
         print e

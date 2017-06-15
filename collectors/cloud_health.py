@@ -30,7 +30,7 @@ def run():
                 'value': service_value
             })
 
-        print json.dumps(json_template)
+        # print json.dumps(json_template)
         ES.create_index_data(json_template)
     except Exception:
         logger.error('error parsing %s', constants.SOURCE_CLOUD_HEALTH, exc_info=1)

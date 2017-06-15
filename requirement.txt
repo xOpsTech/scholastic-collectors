@@ -1,2 +1,4 @@
 elasticsearch
 apscheduler
+beautifulsoup4
+selenium

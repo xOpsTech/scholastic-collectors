@@ -1,21 +1,22 @@
 import json
-import requests
 from bs4 import BeautifulSoup
 from utils import constants
 from utils import templates
+from selenium import webdriver
 from db import ES_Reader as ES
 import logging
 
 logger = logging.getLogger(__name__)
 
-page = requests.get(constants.URL_OKTA)
-soup = BeautifulSoup(page.content, 'html.parser')
+driver = webdriver.PhantomJS()
+driver.get(constants.URL_OKTA)
+soup = BeautifulSoup(driver.page_source, 'html.parser')
 # print soup.prettify()
 
 HAPPY_STATE = 'all systems are operational'
 
 html_tags = [
-    ('h4', 'content-title'),
+    ('h1', 'current-status__title current-status__title--good'),
 ]
 
 
@@ -36,7 +37,7 @@ def run():
                 break
 
         if elements:
-            service_status = elements[0].text.strip().lower()
+            service_status = elements[0].text.strip()
 
         # service_value = service_states_dict[service_name_and_status]
 
@@ -48,7 +49,7 @@ def run():
         if service_status.lower() != HAPPY_STATE:
             json_template['sourceStatus'] = constants.STATUS_CRITICAL
 
-        print json.dumps(json_template)
+        # print json.dumps(json_template)
         ES.create_index_data(json_template)
     except Exception:
         logger.error('error parsing %s', constants.SOURCE_OKTA, exc_info=1)

@@ -56,7 +56,7 @@ def run():
         if service_name_and_status.lower() != HAPPY_STATE:
             json_template['sourceStatus'] = constants.STATUS_CRITICAL
 
-        print json.dumps(json_template)
+        # print json.dumps(json_template)
         ES.create_index_data(json_template)
     except Exception:
         logger.error('error parsing %s', constants.SOURCE_SUMOLOGIC, exc_info=1)
