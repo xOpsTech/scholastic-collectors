@@ -13,3 +13,6 @@ SOURCE_OKTA = 'Okta'
 
 URL_NETSUITE = 'https://status.netsuite.com/'
 SOURCE_NETSUITE = 'Netsuite'
+
+URL_AWS = 'https://status.aws.amazon.com/'
+SOURCE_AWS = 'Aws Global'
