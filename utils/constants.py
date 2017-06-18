@@ -16,3 +16,6 @@ SOURCE_NETSUITE = 'Netsuite'
 
 URL_AWS = 'https://status.aws.amazon.com/'
 SOURCE_AWS = 'Aws Global'
+
+URL_APICA = 'http://status.apicasystem.com/'
+SOURCE_APICA = 'Apica'
