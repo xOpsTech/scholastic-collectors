@@ -9,8 +9,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 driver = webdriver.PhantomJS()
-driver.get(constants.URL_OKTA)
-soup = BeautifulSoup(driver.page_source, 'html.parser')
 # print soup.prettify()
 
 HAPPY_STATE = 'all systems are operational'
@@ -21,6 +19,9 @@ html_tags = [
 
 
 def run():
+    driver.get(constants.URL_OKTA)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+
     json_template = templates.get_json_template()
     json_template.update({
         'source': constants.SOURCE_OKTA,

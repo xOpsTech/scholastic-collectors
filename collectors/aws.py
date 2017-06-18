@@ -7,8 +7,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-page = requests.get(constants.URL_AWS)
-soup = BeautifulSoup(page.content, 'html.parser')
 # print soup.prettify()
 
 HAPPY_STATE = 'service is operating normally'
@@ -31,6 +29,9 @@ html_tags = [
 
 
 def run():
+    page = requests.get(constants.URL_AWS)
+    soup = BeautifulSoup(page.content, 'html.parser')
+
     json_template = templates.get_json_template()
     json_template.update({
         'source': constants.SOURCE_AWS,

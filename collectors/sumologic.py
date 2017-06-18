@@ -8,8 +8,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-page = requests.get(constants.URL_SUMOLOGIC)
-soup = BeautifulSoup(page.content, 'html.parser')
 # print soup.prettify()
 
 HAPPY_STATE = 'all systems operational'
@@ -28,6 +26,9 @@ html_tags = [
 
 
 def run():
+    page = requests.get(constants.URL_SUMOLOGIC)
+    soup = BeautifulSoup(page.content, 'html.parser')
+
     json_template = templates.get_json_template()
     json_template.update({
         'source': constants.SOURCE_SUMOLOGIC,

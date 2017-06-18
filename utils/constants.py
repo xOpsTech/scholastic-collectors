@@ -19,3 +19,6 @@ SOURCE_AWS = 'Aws Global'
 
 URL_APICA = 'http://status.apicasystem.com/'
 SOURCE_APICA = 'Apica'
+
+URL_ADOBE = 'http://status.adobe.com/'
+SOURCE_ADOBE = 'Adobe'

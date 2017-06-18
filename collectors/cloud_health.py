@@ -7,11 +7,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-page = requests.get(constants.URL_CLOUD_HEALTH)
-soup = BeautifulSoup(page.content, 'html.parser')
-
 
 def run():
+    page = requests.get(constants.URL_CLOUD_HEALTH)
+    soup = BeautifulSoup(page.content, 'html.parser')
+
     json_template = templates.get_json_template()
     json_template.update({
         'source': constants.SOURCE_CLOUD_HEALTH,
