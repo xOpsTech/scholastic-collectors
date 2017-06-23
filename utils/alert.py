@@ -1,7 +1,7 @@
 import hashlib
 from datetime import datetime
 import pytz
-from util.redis_client import RedisClient
+from utils.redis_client import RedisClient
 
 utc = pytz.utc
 fmt = '%Y-%m-%dT%H:%M:%S%z'
