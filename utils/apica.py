@@ -29,7 +29,7 @@ class Client(object):
         return key.lower().replace(" ", "")
 
     def __load_product_to_program_map(self):
-        with open('../util/productTOprogramMap.json') as data_file:
+        with open('utils/productTOprogramMap.json') as data_file:
             data = json.load(data_file)
 
         modified_data = {}

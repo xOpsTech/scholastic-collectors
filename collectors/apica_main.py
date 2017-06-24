@@ -8,7 +8,7 @@ apicaClient = ApicaClient()
 
 def metrics():
     data = {"data": apicaClient.get_monitor_results_group_view()}
-    ES.create_index_data(index='program_data', doc_type='program', body=json.dumps(data))
+    ES.create_index_data(index='program_data', doc_type='program', body=data)
 
 
 def events():

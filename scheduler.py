@@ -19,7 +19,6 @@ app_scheduler = BlockingScheduler(executors=executors)
 
 
 def schedule_collectors():
-    pass
     app_scheduler.add_job(cloud_health.run, 'interval', seconds=SCHEDULER_INTERVAL, id='apica_scheduler')
     app_scheduler.add_job(sumologic.run, 'interval', seconds=SCHEDULER_INTERVAL, id='sumologic_scheduler')
     app_scheduler.add_job(netsuite.run, 'interval', seconds=SCHEDULER_INTERVAL, id='netsuite_scheduler')
