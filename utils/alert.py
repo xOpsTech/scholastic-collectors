@@ -30,7 +30,7 @@ def get_hash(hash_string):
 
 
 def get_event(triggerId, message='Test message', comments='Test Comments', title='Test title', description='',
-              platforms=[''], detailsURL='',severity=4):
+              platforms=[''], detailsURL='', severity=4):
     alert = {
         "storedTimestamp": omp_time,
         "assignedToName": "",
@@ -81,7 +81,8 @@ def get_event(triggerId, message='Test message', comments='Test Comments', title
         "products": [""],
         "timestampUpdated": omp_time,
         "raisedTimestamp": omp_time,
-        "dateHourEnded": None
+        "dateHourEnded": None,
+        "priority": "P3"
     }
 
     alert['eventId'] = get_hash(event_hash_string(alert))
@@ -91,6 +92,12 @@ def get_event(triggerId, message='Test message', comments='Test Comments', title
 
 
 def send_event(triggerId, message='Test message', comments='Test Comments', title='Test title', description='',
-               platforms=[''], detailsURL='',severity=4):
-    alert_json = get_event(triggerId, message, comments, title, description, platforms, detailsURL,severity)
+               platforms=[''], detailsURL='', severity=4):
+    alert_json = get_event(triggerId, message, comments, title, description, platforms, detailsURL, severity)
+
+    if severity == 3:
+        alert_json['priority'] = 'P2'
+    elif severity == 4:
+        alert_json['priority'] = 'P1'
+
     message_writer.send_message(alert_json)
