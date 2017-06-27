@@ -19,7 +19,7 @@ def events():
 
             severity = 0
             if event['severity'] == 'F':
-                severity = 3
+                severity = 4
             elif event['severity'] == 'W':
                 severity = 3
             elif event['severity'] == 'I':
