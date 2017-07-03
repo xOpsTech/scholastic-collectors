@@ -8,7 +8,7 @@ fmt = '%Y-%m-%dT%H:%M:%S%z'
 omp_time = datetime.strftime(utc.localize(datetime.utcnow()), fmt)
 
 # message_writer = EsWriter(host='35.184.66.182')
-message_writer = RedisClient(host='35.184.66.182', port=6379)
+message_writer = RedisClient(host='146.148.51.45', port=6379)
 
 
 def event_hash_string(event_obj):
@@ -30,9 +30,9 @@ def get_hash(hash_string):
 
 
 def get_event(triggerId, message='Test message', comments='Test Comments', title='Test title', description='',
-              platforms=[''], detailsURL='', severity=4):
+              platforms=[''], detailsURL='', severity=4, timestamp=omp_time, isReset=False):
     alert = {
-        "storedTimestamp": omp_time,
+        "storedTimestamp": timestamp,
         "assignedToName": "",
         "domain": "SUM",
         "extraData": {},
@@ -46,7 +46,7 @@ def get_event(triggerId, message='Test message', comments='Test Comments', title
         "locationLabel": "",
         "message": message,
         "relatedStatesIds": [""],
-        "isReset": False,
+        "isReset": isReset,
         "objectType": "alertState",
         "category": "Server",
         "monitoredCIID": "",
@@ -66,9 +66,9 @@ def get_event(triggerId, message='Test message', comments='Test Comments', title
         "description": description,
         "workDuration": "",
         "locationCoordinates": [41.2619, 95.8608],
-        "dateRaised": omp_time.split('T')[0],
+        "dateRaised": timestamp.split('T')[0],
         "monitoredCIName": "",
-        "raisedLocalTimestamp": omp_time,
+        "raisedLocalTimestamp": timestamp,
         "locationCode": "us-central1-f",
         "severity": severity,
         "count": "1",
@@ -79,8 +79,8 @@ def get_event(triggerId, message='Test message', comments='Test Comments', title
         "resetTimestamp": None,
         "geolocLat": "",
         "products": [""],
-        "timestampUpdated": omp_time,
-        "raisedTimestamp": omp_time,
+        "timestampUpdated": timestamp,
+        "raisedTimestamp": timestamp,
         "dateHourEnded": None,
         "priority": "P3"
     }
@@ -92,8 +92,14 @@ def get_event(triggerId, message='Test message', comments='Test Comments', title
 
 
 def send_event(triggerId, message='Test message', comments='Test Comments', title='Test title', description='',
-               platforms=[''], detailsURL='', severity=4):
-    alert_json = get_event(triggerId, message, comments, title, description, platforms, detailsURL, severity)
+               platforms=[''], detailsURL='', severity=4, timestamp=omp_time):
+    if severity in [3, 4]:
+        is_reset = False
+    else:
+        is_reset = True
+
+    alert_json = get_event(triggerId, message, comments, title, description, platforms, detailsURL, severity, timestamp,
+                           is_reset)
 
     if severity == 3:
         alert_json['priority'] = 'P2'

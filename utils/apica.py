@@ -55,7 +55,7 @@ class Client(object):
         return monitor
 
     def get_monitors_by_severity(self, severity='F'):
-        results = self.__get_result(self.__url_builder('checks?enabled=enabled&severity=' + severity + '&auth_ticket='))
+        results = self.__get_result(self.__url_builder('checks?enabled=true&severity=' + severity + '&auth_ticket='))
         monitors = json.loads(results.text)
         return monitors
 

@@ -1,9 +1,11 @@
 from utils.apica import Client as ApicaClient
 from utils.alert import send_event
-import json
+from utils import constants
+from db.sqlite_client import SqlLiteConnection
 from db import ES_Reader as ES
 
 apicaClient = ApicaClient()
+sqlite_client = SqlLiteConnection()
 
 
 def metrics():
@@ -12,33 +14,56 @@ def metrics():
 
 
 def events():
-    event_list = apicaClient.get_monitors_by_severity('FW')
-    print(event_list)
+    event_list = apicaClient.get_monitors_by_severity('FWI')
+    # print(event_list)
     for event in event_list:
         try:
-
-            severity = 0
+            severity = constants.THRESHOLD_STATUS_OK
             if event['severity'] == 'F':
-                severity = 4
+                severity = constants.THRESHOLD_STATUS_CRITICAL
             elif event['severity'] == 'W':
-                severity = 3
+                severity = constants.THRESHOLD_STATUS_WARNING
             elif event['severity'] == 'I':
-                severity = 0
+                severity = constants.THRESHOLD_STATUS_OK
+
+            event_id = event['id']
+            db_record = sqlite_client.get_event_by_id(event_id)
+
+            if severity == constants.THRESHOLD_STATUS_OK:
+                if db_record:
+                    sqlite_client.delete_event(event_id)
+                    check_id, location, severity, timestamp = db_record
+                    print check_id, location, severity, timestamp
+                else:
+                    continue
+
             else:
-                severity = 0
-            send_event(event['id'], event['last_result_details']['message'], event['last_result_details']['message'],
-                       event['url'] + ' : Issue in ' + event['location'],
-                       event['url'] + ' : Issue in ' + event['location'], [""],
-                       'https://wpm.apicasystem.com/Check/Details/' + str(event['id']), severity)
+                location = event['location']
+                timestamp = event['timestamp_utc']
+
+                if db_record:
+                    existing_timestamp = db_record[3]
+                    if timestamp > existing_timestamp:
+                        sqlite_client.update_event(event_id, severity, timestamp)
+                    else:
+                        print event_id, 'ignore duplicates'
+                        continue
+                else:
+                    sqlite_client.insert_event(event_id, location, severity, timestamp)
+
+            send_event(event_id, event['last_result_details']['message'], event['last_result_details']['message'],
+                       event['url'] + ' : Issue in ' + location,
+                       event['url'] + ' : Issue in ' + location, [""],
+                       'https://wpm.apicasystem.com/Check/Details/' + str(event_id), severity, timestamp)
         except Exception as e:
             print(e)
 
 
 if __name__ == "__main__":
     print('started metrics processor ')
-    metrics()
+    # metrics()
     print('started event processor ')
-    # events()
+    events()
     # t_metrics = threading.Thread(target=metrics)
     # e_metrics = threading.Thread(target=events)
     # t_metrics.daemon = True
