@@ -33,7 +33,7 @@ def events():
                 if db_record:
                     sqlite_client.delete_event(event_id)
                     check_id, location, severity, timestamp = db_record
-                    print check_id, location, severity, timestamp
+                    # print check_id, location, severity, timestamp
                 else:
                     continue
 

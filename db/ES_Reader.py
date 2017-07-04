@@ -5,7 +5,7 @@ from elasticsearch import Elasticsearch
 INDEX = 'scholastic'
 TYPE = 'metrics'
 
-es_client = Elasticsearch('35.184.66.182:9200')
+es_client = Elasticsearch('146.148.51.45:9200')
 print 'initialized ES'
 
 logger = logging.getLogger(__name__)
